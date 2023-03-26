@@ -1,0 +1,33 @@
+# OS generated files #
+.*.swp
+*.py[cod]
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.idea/*
+static/*
+db.sqlite3
+.eggs
+
+# Build #
+build
+dist
+prox4d.egg-info/
+
+# setuptools_scm generated  #
+prox4d/version.py
+
+# Development #
+.ipynb_checkpoints/
+
+# Figures
+figures/
+
+# Large files
+data/Sleipner/*.sgy
+data/Sleipner/Sleipner_01_timeshifted_ts0_680.npy
+data/Sleipner_pysubsurface/Seismic/

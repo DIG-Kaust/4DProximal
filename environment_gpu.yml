@@ -1,0 +1,31 @@
+name: prox4d_gpu
+channels:
+  - pytorch
+  - defaults
+  - conda-forge
+dependencies:
+  - python==3.8.5
+  - pip
+  - numpy==1.19.2
+  - scipy==1.5.2
+  - matplotlib==3.5.3
+  - jupyter==1.0.0
+  - cudatoolkit=11.3
+  - pytorch==1.10.1
+  - pip:
+    - segyio==1.9.6
+    - git+https://github.com/DIG-Kaust/pysubsurface
+    - git+https://github.com/pylops/pylops@dev
+    - git+https://github.com/pylops/pyproximal@dev
+    - cupy-cuda113
+    - numba
+    - pyvista
+    - lasio
+    - segyio
+    - matplotlib-scalebar
+    - shapely
+    - descartes
+    - pyyaml
+    - Deprecated
+    - git+https://github.com/cjohnson318/geostatsmodels.git
+
