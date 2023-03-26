@@ -1,3 +1,5 @@
+![](https://github.com/DIG-Kaust/4DProximal/blob/main/4DJIS_gif.gif)
+
 # 4DProximal
 
 4D Post-stack seismic inversion with Proximal solvers. Examples on synthetic Hess model and field Sleipner dataset.
