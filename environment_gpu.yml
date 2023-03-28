@@ -12,11 +12,11 @@ dependencies:
   - jupyter==1.0.0
   - cudatoolkit=11.3
   - pytorch==1.10.1
+  - pylops==2.1.0
+  - pyproximal==0.6.0
   - pip:
     - segyio==1.9.6
     - git+https://github.com/DIG-Kaust/pysubsurface
-    - git+https://github.com/pylops/pylops@dev
-    - git+https://github.com/pylops/pyproximal@dev
     - cupy-cuda113
     - numba
     - pyvista

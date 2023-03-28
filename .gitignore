@@ -30,4 +30,4 @@ figures/
 # Large files
 data/Sleipner/*.sgy
 data/Sleipner/Sleipner_01_timeshifted_ts0_680.npy
-data/Sleipner_pysubsurface/Seismic/
+data/Sleipner_pysubsurface/Seismic/Post/*.sgy
