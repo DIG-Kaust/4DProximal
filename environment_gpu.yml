@@ -12,9 +12,9 @@ dependencies:
   - jupyter==1.0.0
   - cudatoolkit=11.3
   - pytorch==1.10.1
-  - pylops==2.1.0
-  - pyproximal==0.6.0
   - pip:
+    - pylops==2.1.0
+    - pyproximal==0.6.0
     - segyio==1.9.6
     - git+https://github.com/DIG-Kaust/pysubsurface
     - cupy-cuda113
@@ -22,6 +22,7 @@ dependencies:
     - pyvista
     - lasio
     - segyio
+    - seaborn
     - matplotlib-scalebar
     - shapely
     - descartes

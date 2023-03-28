@@ -9,15 +9,16 @@ dependencies:
   - scipy==1.5.2
   - matplotlib==3.4.2
   - jupyter==1.0.0
-  - pylops==2.1.0
-  - pyproximal==0.6.0
   - pip:
+    - pylops==2.1.0
+    - pyproximal==0.6.0
     - segyio==1.9.6
     - git+https://github.com/DIG-Kaust/pysubsurface
     - numba
     - pyvista
     - lasio
     - segyio
+    - seaborn
     - matplotlib-scalebar
     - shapely
     - descartes
