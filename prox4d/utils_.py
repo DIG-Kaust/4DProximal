@@ -76,7 +76,7 @@ def plotter_4D(b, m, dt=1, type='impedance', perc=1, dif_scale=0.01, ref=None,
         ax2 = fig.add_subplot(gs[:, 2])
         dif = ax2.imshow((m - b) / m, vmin=-dif_scale, vmax=dif_scale, cmap='seismic_r')
         ax2.set_yticklabels([])
-        ax2.set_title('c) Monitor - Difference')
+        ax2.set_title('c) Monitor - Baseline')
         ax2.axis('tight')
         if vline is not None:
             plt.vlines(vline, 0, m.shape[0], 'k')
