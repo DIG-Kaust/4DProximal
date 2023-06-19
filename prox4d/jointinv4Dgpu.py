@@ -225,8 +225,12 @@ def jis_4D_gpu(d_base, d_monitor, mback, cl, Op_base, Op_mon, model_tv,
 
             # Update p
             l2_grad = L2(Op=L1op, b=d1)
-            dp = (1. / alpha) * l2_grad.grad(minv_cp)
-            p -= cp_asnumpy(np.real(dp))
+            dp = l2_grad.grad(minv_cp)
+            minv = cp_asnumpy(minv_cp)
+            dm = minv.ravel()[minv.ravel().shape[0]//2:] - minv.ravel()[:minv.ravel().shape[0]//2]
+            dp2 = np.sum([v[:, icl] * (dm-cl[icl]) for icl in range(ncl)], axis=0)
+            dp2 = np.hstack([dp2*-1, dp2])
+            p -= (1. / alpha) * (np.real(cp_asnumpy(dp)+2*delta*dp2))
 
         minv = cp_asnumpy(minv_cp)
         minv_hist.append(minv)

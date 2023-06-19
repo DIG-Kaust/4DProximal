@@ -100,20 +100,6 @@ def jis_4D(d_base, d_monitor, mback, cl, Op_base, Op_mon, model_tv,
         Dop = BlockDiag([Dop, Dop])
         l1 = L1(sigma=alpha)
 
-    elif model_tv == 'vertical':
-        # Test under development
-        Dzop = FirstDerivative(dims=mshape, axis=0, edge=True, dtype=Op_base.dtype, kind='forward')
-        Zop = Zero(mprod, dtype='float64')
-        Dop = Block([[Dzop, Zop],
-                     [Zop, Dzop]])
-        l1 = L21(ndim=len(mshape), sigma=alpha)
-
-        Dl2 = Laplacian(dims=mshape, dtype=Op_base.dtype)
-        Dl2 = 0.75*BlockDiag([Dl2, Dl2])
-        d = np.hstack([d_base.ravel(), d_monitor.ravel(), np.zeros(d_base.size*2)])
-        Op = BlockDiag([Op_base, Op_mon])
-        Op = VStacklop([Op, Dl2])
-
     elif model_tv == 'isotropic':
         if len(mshape) == 3:
             Dzop = FirstDerivative(dims=mshape, axis=0, edge=True, dtype=Op_base.dtype, kind='forward')
@@ -223,8 +209,11 @@ def jis_4D(d_base, d_monitor, mback, cl, Op_base, Op_mon, model_tv,
 
             # Update p
             l2_grad = L2(Op=L1op, b=d1)
-            dp = (1. / alpha) * l2_grad.grad(minv)
-            p -= np.real(dp)
+            dp = l2_grad.grad(minv)
+            dm = minv.ravel()[minv.ravel().shape[0]//2:] - minv.ravel()[:minv.ravel().shape[0]//2]
+            dp2 = np.sum([v[:, icl] * (dm-cl[icl]) for icl in range(ncl)], axis=0)
+            dp2 = np.hstack([dp2*-1, dp2])
+            p -= (1. / alpha) * (np.real(dp+2*delta*dp2))
 
         minv_hist.append(minv)
         base = np.exp(minv[:minv.shape[0] // 2])
